@@ -46,4 +46,6 @@ doc/conf.py
 
 # build2
 .bdep/
-.build2/local/
+!build2/
+build2/local/
+build2/bootstrap/
