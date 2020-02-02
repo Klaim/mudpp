@@ -2,7 +2,8 @@ import libs = sol2%lib{sol2} tabulate%lib{tabulate}
 
 if ($cxx.target.class != 'windows')
 {
-    import libs += libboost%lib{boost_asio}
+#    import libs += liboost%lib{boost_system}
+     cxx.libs += -lpthread
 }
 
 lib{mudpp} : cxx{**} ../include/hxx{**} $libs
