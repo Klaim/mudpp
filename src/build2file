@@ -1,11 +1,17 @@
-import libs = sol2%lib{sol2} libboost%lib{boost asio}
+import libs = sol2%lib{sol2} tabulate%lib{tabulate}
 
-lib{mudpp} : cxx{**} ../include/hxx{**}
+if ($cxx.target.class != 'windows')
+{
+    import libs += libboost%lib{boost_asio}
+}
+
+lib{mudpp} : cxx{**} ../include/hxx{**} $libs
 
 cxx.poptions =+ "-I$out_root" "-I$src_root" "-I$src_root/include"
 
 lib{mudpp} :
 {
     cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_root/include"
+    cxx.export.libs = $libs
 }
 
