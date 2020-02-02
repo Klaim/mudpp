@@ -42,3 +42,8 @@
 Testing/
 doc/conf.py
 *.player
+
+
+# build2
+.bdep/
+.build2/local/

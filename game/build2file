@@ -1,0 +1,7 @@
+include ../src/
+
+
+./ : exe{game} : cxx{game} ../src/lib{mudpp}
+
+exe{game} : file{*/}
+

@@ -1,0 +1,17 @@
+: 1
+name: mudpp
+version: 0.1.0-a.0.z
+summary: "MUD++ is a small attempt at building a C++117, modern version of a MUD server engine. Consider it half-serious (I wish it can ends up playable & played) and educationnal."
+license: MIT
+description-file: README.md
+url: https://github.com/Klaim/mudpp
+email: joel.falcou@lri.fr
+package-email: mjklaim@gmail.com
+
+depends: * build2 >= 0.12.0
+depends: * bpkg >= 0.12.0
+
+depends: sol2
+depends: tabulate
+depends: libboost ^1.71.0
+
