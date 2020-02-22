@@ -1,3 +1,5 @@
+./ : lib{mudpp}
+
 import libs = sol2%lib{sol2} tabulate%lib{tabulate}
 
 if ($cxx.target.class != 'windows')
@@ -8,6 +10,10 @@ if ($cxx.target.class != 'windows')
 
 lib{mudpp} : cxx{**} ../include/hxx{**} $libs
 
+# Only export/import symbols for the shared library version
+objs{*} : cxx.poptions += -DMUDPP_API_EXPORTS
+obja{*} : cxx.poptions += -DMUDPP_API_STATIC
+
 cxx.poptions =+ "-I$out_root" "-I$src_root" "-I$src_root/include"
 
 lib{mudpp} :
@@ -15,4 +21,7 @@ lib{mudpp} :
     cxx.export.poptions = "-I$out_root" "-I$src_root" "-I$src_root/include"
     cxx.export.libs = $libs
 }
+
+libs{mudpp} : cxx.export.poptions += -DMUDPP_API_EXPORTS
+liba{mudpp} : cxx.export.poptions += -DMUDPP_API_STATIC
 
